@@ -1,8 +1,14 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
-    <a class="navbar-brand" href="#">BackDo</a> 
+  	<%= link_to "BackDo", root_path, class: "navbar-brand" %>
     <ul class="nav navbar-nav navbar-right">
-       <li><a href="#">Link</a></li>
+     <% if current_user %>
+      <li><%= link_to "Settings", edit_user_registration_path %></li>
+      <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+     <% else %>
+       	<li><%= link_to "About", about_path %></li>
+       	<li><%= link_to "Login", new_user_session_path %></li>
+     <% end %>
       </ul> 
    </div>
 </nav>
